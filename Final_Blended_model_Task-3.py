@@ -1,17 +1,17 @@
 """
 RTC Traffic Classification -- CyberAI Cup 2026, Task 3
-FINAL BLENDED PIPELINE (mine + TabICL, with the Zoom audio-only-window rule)
+FINAL BLENDED PIPELINE (Ensemble + TabICL, with the Zoom audio-only-window rule)
 
 Validated (10-fold grouped nested-CV, weight chosen on train-side only,
 scored on unseen held-out folds):
 
     TabICL alone                    : macro-F1 0.8201
-    My ensemble alone (raw)         : macro-F1 0.7900
+    Ensemble alone (raw)            : macro-F1 0.7900
     Blend (w=0.40 mine / 0.60 them) : macro-F1 0.8286
     Blend + Zoom rule               : macro-F1 0.8318   <-- shipped
 
 Where each side actually helps (per-class OOF F1, same nested split):
-    - My contribution is concentrated almost entirely in Zoom_voice
+    - Ensemble contribution is concentrated almost entirely in Zoom_voice
       (my recall 0.712 vs TabICL's 0.438 on that class -- this is the
       one class my WEAK_CLASSES recall-bias genuinely wins on).
     - TabICL is equal-or-better on every other one of the 10 classes.
